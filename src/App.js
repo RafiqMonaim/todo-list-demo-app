@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import AddTask from './AddTask.js'; 
+import AddTask from './AddTask'; 
+import Task from './Task'
+import Grid from '@material-ui/core/Grid';
 
 class App extends Component{
 
@@ -10,11 +12,11 @@ class App extends Component{
     },
     {
       title: "task 2",
-      id: 1
+      id: 2
     },
     {
       title: "task 3",
-      id: 1
+      id: 3
     }  
     ]
   };
@@ -22,6 +24,11 @@ class App extends Component{
   render () {
     return (
       <div className="App">
+        <Grid container justify="center" alignItems="center" direction="column" style={{ minHeight: '25vh' }}>
+        {this.state.tasks.map(t=>{
+          return <Task value={t} id={t.id}/>;
+        })}
+        </Grid>
         <AddTask/>
       </div>
     );
